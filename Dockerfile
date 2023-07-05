@@ -17,6 +17,7 @@ RUN apt-get update \
     libssl-dev \
     r-base \
     r-base-dev \
+    cmake \
   && add-apt-repository -r "deb [arch=amd64,i386] https://cran.rstudio.com/bin/linux/ubuntu $(lsb_release -cs)-cran40/" \
   && apt-key del E298A3A825C0D65DFD57CBB651716619E084DAB9 \
   && apt-get clean \
@@ -29,4 +30,4 @@ RUN R -e "options(repos = list(MRAN = 'https://mran.microsoft.com/snapshot/2022-
  && R -e "install.packages('https://cran.r-project.org/src/contrib/Archive/hwriterPlus/hwriterPlus_1.0-3.tar.gz', repos=NULL, type='source')" \
  && R -e "install.packages('Rserve', repos='http://rforge.net/')"
 
-RUN R -e "install.packages('Robyn', dependencies = TRUE)"
+RUN R -e "install.packages('Robyn', dependencies=TRUE)"
